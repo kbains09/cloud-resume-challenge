@@ -1,0 +1,17 @@
+@import '../../App.scss'; // Import global styles if necessary
+
+footer {
+  background-color: var(--nav-background-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.125rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+
+  p {
+    margin: 0.5rem 0;
+  }
+}
