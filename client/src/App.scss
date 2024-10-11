@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
-}
+//Global Style Sheet
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+// Global Mixin for Media Queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (min-width: 480px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+// Ensure html and body take up full height of the viewport
+html, body {
+  height: 100%; // Full height for the entire document
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+// Global body styles
+body {
+  background-color: var(--background-color); // Uses the current theme background
+  color: var(--text-color); // Uses the current theme text color
+  font-size: 16px; // Base font size
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh; // Ensure body takes up the full viewport height
+
+  // Smooth transition between light/dark mode
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+// Box-sizing rule for all elements
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+// Wrapper for the entire app layout
+#app-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // Ensures the content grows to fill available space
+}
+
+// Main content area
+main {
+  flex-grow: 1; // Make main content take up available vertical space
+  padding-top: 60px; // Adjust this based on the height of your header
+  padding-bottom: 60px; // Adjust this based on the height of your footer
+}
+
+// Footer to stay at the bottom
+footer {
+  background-color: var(--nav-background-color); // Footer background color from theme
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+// Global theme variables for light and dark mode
+// Light mode styles (default)
+:root {
+  // Background color for light mode
+  --background-color: #ffffff; // White background for light mode
+  // Text color for light mode
+  --text-color: #333333; // Darker text color for better contrast
+  // Link color for light mode
+  --link-color: #007bff; // Light mode link color
+  // Navigation background color for light mode
+  --nav-background-color: #f1f1f1; // Light grey for navigation in light mode
+}
+
+// Dark mode styles
+[data-theme='dark'] {
+  // Background color for dark mode
+  --background-color: #121212; // Dark background for dark mode
+  // Text color for dark mode
+  --text-color: #f0f0f0; // Lighter text color for dark mode
+  // Link color for dark mode
+  --link-color: #bb86fc; // Dark mode link color
+  // Navigation background color for dark mode
+  --nav-background-color: #1f1f1f; // Dark grey for navigation in dark mode
 }

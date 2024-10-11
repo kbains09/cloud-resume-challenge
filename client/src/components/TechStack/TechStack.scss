@@ -1,0 +1,59 @@
+@import '../../App.scss';
+
+.tech-stack {
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Grid container for tech categories (cards) */
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr; // Single column on mobile
+  gap: 1.5rem; // Space between the cards
+
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr 1fr; // Two columns on tablet screens
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: 1fr 1fr 1fr; // Three columns on desktop
+  }
+}
+
+/* Card styling for each tech category */
+.tech-card {
+  background-color: var(--nav-background-color); // Card background color (darker)
+  padding: 1.5rem;
+  border-radius: 0.75rem; // Rounded corners
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); // Soft shadow for card effect
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-0.3125rem); //Slight lift on hover
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); // Increase shadow on hover
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--link-color); // Heading in link color for contrast
+  }
+
+  ul {
+    list-style-type: none; // Remove bullet points from the list
+    padding: 0;
+
+    li {
+      font-size: 1rem;
+      margin-bottom: 0.5rem; 
+      color: var(--text-color); // Use the global text color
+    }
+  }
+}
