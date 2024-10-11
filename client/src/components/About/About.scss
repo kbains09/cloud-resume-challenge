@@ -1,0 +1,41 @@
+@import '../../App.scss'; // Import global styles
+
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  padding-top: 5rem;
+  text-align: center;
+  background-color: var(--background-color); // Global background color
+  color: var(--text-color); // Global text color
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--link-color); // Accent color for the heading
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 50rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #about {
+    padding: 3rem;
+    padding-top: 6.25rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+}

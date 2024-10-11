@@ -1,0 +1,59 @@
+@import '../../App.scss'; // Import global styles
+
+.contact-links {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .links-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; // Center items in mobile view
+    gap: 1.5rem; // Space between the icons
+  }
+
+  .link-button {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-0.3125rem);
+    }
+
+    img {
+      width: 3.125rem; 
+      height: 3.125rem; 
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1); // Slightly enlarge the image on hover
+    }
+  }
+}
+
+/* Tablet and desktop styling */
+@media (min-width: 768px) {
+  .links-container {
+    justify-content: space-around; // Distribute logos evenly on larger screens
+  }
+
+  .link-button img {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .link-button img {
+    width: 4.375rem; 
+    height: 4.375rem;
+  }
+}
