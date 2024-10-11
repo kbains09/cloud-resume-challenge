@@ -1,0 +1,68 @@
+@import '../../App.scss';
+
+// Header styles
+nav {
+  background-color: var(--nav-background-color); // Use global background color
+  padding: 1rem 0.5rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0; // Mobile: Navigation at the bottom
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 1000;
+
+  a {
+    display: block;
+    color: var(--link-color); // Use global link color
+    text-decoration: none;
+    padding: 0.625rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: 0.3125rem;
+
+    &:hover, &:focus {
+      background-color: var(--background-color); // Hover effect using global background
+      color: var(--text-color); // Text color for hover from global styles
+    }
+  }
+
+  .active {
+    background-color: var(--background-color); // Active background from global
+    color: var(--text-color); // Active text color from global
+  }
+}
+
+// Media query for larger screens
+@media (min-width: 768px) {
+  nav {
+    width: 100%; // Ensure the header stays at the top and spans the full width
+    top: 0; // Position the navigation at the top
+    bottom: auto; // Remove the bottom positioning for larger screens
+    flex-direction: row; // Keep the buttons in a row for larger screens
+    justify-content: space-around; // Distribute buttons evenly
+
+    a {
+      margin: 0 1.25rem; // Adjust margins for links in larger screens
+      padding: 1.25rem; // Adjust padding for larger screens
+      border-radius: 0.625rem; // Keep consistent with mobile
+    }
+
+    &:before {
+      display: none; // Remove the arrow (hover effect) completely
+    }
+  }
+}
+
+// Global styles to avoid header overlap
+main {
+  padding-top: 60px; // Adjust this to match the height of your header for mobile
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 70px; // Adjust this to match the height of your header for desktop
+  }
+}
+
