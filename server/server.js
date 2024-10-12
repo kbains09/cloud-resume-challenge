@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +12,7 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 
 // Path to the JSON file
-const countFilePath = path.join(__dirname, 'userCount.json');
+const countFilePath = process.env.COUNT_FILE_PATH || path.join(__dirname, 'userCount.json');
 
 // Function to write to the JSON file
 const writeUserCount = (newCount) => {
@@ -29,6 +30,9 @@ const readUserCount = () => {
   const data = fs.readFileSync(countFilePath, 'utf-8');
   return JSON.parse(data);
 };
+
+// Serve static files from the React app's build folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API route to fetch and update the user count
 app.get('/api/user-count', (req, res) => {
@@ -49,6 +53,11 @@ app.get('/api/user-count', (req, res) => {
 // Swagger setup
 const swaggerDocument = require('./swagger.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Serve the React frontend for any unknown routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Start the server
 app.listen(port, () => {
