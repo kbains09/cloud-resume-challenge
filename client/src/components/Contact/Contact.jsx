@@ -8,7 +8,7 @@ function Contact() {
       <div className="links-container">
         {/* Resume */}
         <a 
-          href="https://yourwebsite.com/path-to-your-resume.pdf" 
+          href="/resume.pdf" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="link-button"
